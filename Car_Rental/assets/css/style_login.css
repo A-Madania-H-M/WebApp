@@ -8,7 +8,7 @@
 
 /*Background*/
 body {
-  background-image: url('SignLog.png');
+  background-image: url('../images/SignLog.png');
   background-size: cover; /* Ensures the image covers the whole background */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents repeating */
@@ -67,6 +67,21 @@ p {
 /*Efek underline saat hover*/
 .green-text:hover {
   text-decoration: underline; 
+}
+
+.grey-text {
+  display: block;
+  color: #808080; /* Warna abu-abu */
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: none; /* Hilangkan underline bawaan */
+  transition: color 0.3s ease;
+}
+
+.grey-text:hover {
+  color: #4CB963; /* Warna hijau saat hover */
+  text-decoration: underline;
 }
 
 /* Input field styling */
@@ -159,4 +174,23 @@ input[type="submit"]:hover {
 
 .social-field:hover {
   background: #ececec;
+}
+/* Styling untuk "Ingat Saya" */
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #333;
+  margin: 10px 0;
+}
+
+.remember-me input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.remember-me label {
+  cursor: pointer;
 }

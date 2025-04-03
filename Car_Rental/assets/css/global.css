@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  
+  p {
+    font-size: 1rem;
+    color: #000000;
+    text-align: left;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: #4CB963;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  
+  input[type="submit"]:hover {
+    background: #157F1F;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: white;
+    margin-top: 20px;
+  }
+  

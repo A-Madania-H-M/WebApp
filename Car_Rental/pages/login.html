@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--Head-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=""width=device-width, initial-scale="1.0">
+    <title> 
+        Car Rental | Rent cars here!
+    </title>
+    <script src="https://kit.fontawesome.com/1ab94d0eba.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/css/style_login.css">
+</head>
+
+<!--Body-->
+<body>
+    <main class="container">
+        
+        <!--Title-->
+        <h2>Car Rental</h2>
+        <p>Belum punya akun? <a href="signin.html" class="green-text">Sign Up!</a></p>
+
+
+        <!-- Input Field for Username and Password -->
+        <form action="../index.html" onsubmit="redirectToIndex(event)">
+            <div class="input-field">
+                <input type="text" name="username" id="username" placeholder="Username" required>
+                <div class="underline"></div>
+            </div>
+            <div class="input-field">
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <div class="underline"></div>
+            </div>
+            <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Ingat Saya</label>
+            </div>
+            <input type="submit" value="Masuk">
+        </form>
+        
+        <script>
+            function redirectToIndex(event) {
+                event.preventDefault(); // Stop default form submission
+                window.location.replace("../index.html"); // Redirect correctly
+            }
+        </script>
+        
+
+        <!--Other Sign In method-->
+        <div class="footer">
+            <span>Atau Log In melalui</span>
+            <div class="social-fields">
+                <div class="social-field google">
+                    <a href="#">
+                        <i class="fab fa-google"></i>
+                        Log in menggunakan Google
+                </div>
+            </div>
+        </div> 
+        <a href="#" class="grey-text">Lupa password?</a>
+       
+
+
+
+
+    </main>
+</body>
+</html>
