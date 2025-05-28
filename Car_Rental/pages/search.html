@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Cars - CarRental</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/1ab94d0eba.js" crossorigin="anonymous"></script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style_search.css" />
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+    
+      <!-- Search Bar -->
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <input 
+            type="text" 
+            placeholder="Hyundai EV" 
+            class="px-4 py-2 border border-gray-300 rounded-lg w-64 focus:outline-none focus:ring-2 focus:ring-green-600"
+            id="searchInput"
+          />
+          <button class="absolute right-2 top-2" onclick="performSearch()">
+            <i class="fas fa-search text-gray-500"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 pt-24 pb-10">
+    
+    <!-- Filter Section -->
+    <div class="mb-8">
+      <div class="flex items-center mb-4">
+        <i class="fas fa-filter text-green-600 mr-2"></i>
+        <span class="text-lg font-semibold">Filter</span>
+      </div>
+      
+      <div class="flex flex-wrap gap-2" id="filterButtons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="EV">EV</button>
+        <button class="filter-btn" data-filter="Coupe">Coupe</button>
+        <button class="filter-btn" data-filter="Sedan">Sedan</button>
+        <button class="filter-btn" data-filter="SUV">SUV</button>
+        <button class="filter-btn" data-filter="Sport">Sport</button>
+        <button class="filter-btn" data-filter="Wagon">Wagon</button>
+        <button class="filter-btn" data-filter="Supercar">Supercar</button>
+        <button class="filter-btn" data-filter="Truck">Truck</button>
+      </div>
+    </div>
+
+    <!-- Search Results -->
+    <div class="mb-6">
+      <h2 class="text-2xl font-bold text-green-600">Search Result</h2>
+    </div>
+
+    <!-- Cars List -->
+    <div id="carsList" class="space-y-8">
+      <!-- Car items will be dynamically loaded here -->
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="text-center py-8 hidden">
+      <div class="inline-flex items-center">
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
+        <span class="ml-3 text-gray-600">Loading more cars...</span>
+      </div>
+    </div>
+
+    <!-- No Results -->
+    <div id="noResults" class="text-center py-16 hidden">
+      <i class="fas fa-car text-gray-300 text-6xl mb-4"></i>
+      <h3 class="text-xl font-semibold text-gray-500 mb-2">No cars found</h3>
+      <p class="text-gray-400">Try adjusting your filters or search terms</p>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-10 bg-white border-t py-6">
+    <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-500">
+      <div>
+        <h5 class="font-semibold text-gray-700 mb-2">CarRental.com</h5>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:text-green-600">Page</a></li>
+          <li><a href="#" class="hover:text-green-600">Page</a></li>
+          <li><a href="#" class="hover:text-green-600">Page</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold text-gray-700 mb-2">Topic</h5>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:text-green-600">Page</a></li>
+          <li><a href="#" class="hover:text-green-600">Page</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold text-gray-700 mb-2">Topic</h5>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:text-green-600">Page</a></li>
+          <li><a href="#" class="hover:text-green-600">Page</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold text-gray-700 mb-2">Topic</h5>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:text-green-600">Page</a></li>
+          <li><a href="#" class="hover:text-green-600">Page</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="container mx-auto px-4 mt-6 pt-4 border-t flex justify-between items-center">
+      <div class="flex space-x-4">
+        <a href="#" class="text-gray-400 hover:text-green-600"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-gray-400 hover:text-green-600"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="text-gray-400 hover:text-green-600"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="text-gray-400 hover:text-green-600"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p class="text-gray-400">&copy; 2024 CarRental. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Car data
+    const cars = [
+      {
+        id: 1,
+        name: "Hyundai KONA",
+        type: "EV",
+        description: "Mobil SUV EV dari Hyundai yang memiliki kenyamanan baik dan interior luas...",
+        image: "../assets/images/Kona.png",
+        price: "Rp. 1.500.000",
+        period: "/ hari"
+      },
+      {
+        id: 2,
+        name: "Hyundai Elantra Limited",
+        type: "Sedan",
+        description: "Mobil Coupe yang gesit dan sempurna untuk melalui jalanan kecil Jakarta",
+        image: "../assets/images/Elantra.png",
+        price: "Rp. 2.200.000",
+        period: "/ hari"
+      },
+      {
+        id: 3,
+        name: "Hyundai i20",
+        type: "Coupe",
+        description: "Mobil Coupe cocok untuk menjelajah pojok-pojok kota yang memiliki jalan kecil...",
+        image: "../assets/images/i20.png",
+        price: "Rp. 1.800.000",
+        period: "/ hari"
+      },
+      {
+        id: 4,
+        name: "Porsche Cayenne",
+        type: "SUV",
+        description: "Mobil SUV tepat untuk keluarga beranggotakan 6 dengan interior mewah dan luas!",
+        image: "../assets/images/Cayenne_Header.png",
+        price: "Rp. 1.350.000",
+        period: "/ hari"
+      },
+      {
+        id: 5,
+        name: "GR Yaris",
+        type: "Sport",
+        description: "Mobil Coupe yang gesit dan lincah untuk pengalaman berkendara yang menantang",
+        image: "../assets/images/Yaris.png",
+        price: "Rp. 1.750.000",
+        period: "/ Minggu"
+      },
+      {
+        id: 6,
+        name: "Holden Commodore",
+        type: "Sedan",
+        description: "Mobil elegan yang memiliki tarikan kuat dan performa maksimal",
+        image: "../assets/images/Holden.png",
+        price: "Rp. 2.000.000",
+        period: "/ hari"
+      },
+      {
+        id: 7,
+        name: "Fortuner GR Sport",
+        type: "SUV",
+        description: "Mobil keren dengan performa perkotaan dan offroad yang sangat baik",
+        image: "../assets/images/Fortuner.png",
+        price: "Rp. 3.000.000",
+        period: "/ hari"
+      }
+    ];
+
+    let currentFilter = 'all';
+    let displayedCars = 0;
+    const carsPerLoad = 3;
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      loadMoreCars();
+      setupInfiniteScroll();
+      setupFilters();
+    });
+
+    // Setup filter buttons
+    function setupFilters() {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          currentFilter = this.dataset.filter;
+          displayedCars = 0;
+          document.getElementById('carsList').innerHTML = '';
+          loadMoreCars();
+        });
+      });
+    }
+
+    // Filter cars based on current filter
+    function getFilteredCars() {
+      if (currentFilter === 'all') {
+        return cars;
+      }
+      return cars.filter(car => car.type === currentFilter);
+    }
+
+    // Load more cars
+    function loadMoreCars() {
+      const filteredCars = getFilteredCars();
+      const carsList = document.getElementById('carsList');
+      const noResults = document.getElementById('noResults');
+      
+      if (filteredCars.length === 0) {
+        noResults.classList.remove('hidden');
+        return;
+      } else {
+        noResults.classList.add('hidden');
+      }
+
+      const carsToShow = filteredCars.slice(displayedCars, displayedCars + carsPerLoad);
+      
+      carsToShow.forEach(car => {
+        const carElement = createCarElement(car);
+        carsList.appendChild(carElement);
+      });
+
+      displayedCars += carsToShow.length;
+
+      // Hide loading if no more cars
+      if (displayedCars >= filteredCars.length) {
+        document.getElementById('loadingIndicator').classList.add('hidden');
+      }
+    }
+
+    // Create car element
+    function createCarElement(car) {
+      const carDiv = document.createElement('div');
+      carDiv.className = 'car-item bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer';
+      carDiv.onclick = () => window.location.href = `detail-${car.name.toLowerCase().replace(/\s+/g, '-')}.html`;
+      
+      carDiv.innerHTML = `
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/2 p-6">
+            <h3 class="text-xl font-bold text-green-600 mb-2">${car.name}</h3>
+            <p class="text-gray-600 mb-4">${car.description}</p>
+            <div class="flex space-x-3">
+              <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
+                Rental
+              </button>
+              <button class="border border-green-600 text-green-600 px-4 py-2 rounded hover:bg-green-50 transition-colors">
+                Detail...
+              </button>
+            </div>
+          </div>
+          <div class="md:w-1/2 p-6 flex items-center justify-center">
+            <img src="${car.image}" alt="${car.name}" class="max-w-full h-auto rounded-lg" />
+          </div>
+        </div>
+      `;
+      
+      return carDiv;
+    }
+
+    // Setup infinite scroll
+    function setupInfiniteScroll() {
+      window.addEventListener('scroll', function() {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 1000) {
+          const filteredCars = getFilteredCars();
+          if (displayedCars < filteredCars.length) {
+            document.getElementById('loadingIndicator').classList.remove('hidden');
+            setTimeout(() => {
+              loadMoreCars();
+              document.getElementById('loadingIndicator').classList.add('hidden');
+            }, 1000);
+          }
+        }
+      });
+    }
+
+    // Search functionality
+    function performSearch() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      if (searchTerm) {
+        // Filter cars based on search term
+        const searchResults = cars.filter(car => 
+          car.name.toLowerCase().includes(searchTerm) || 
+          car.description.toLowerCase().includes(searchTerm) ||
+          car.type.toLowerCase().includes(searchTerm)
+        );
+        
+        // Display search results
+        displayedCars = 0;
+        const carsList = document.getElementById('carsList');
+        carsList.innerHTML = '';
+        
+        searchResults.forEach(car => {
+          const carElement = createCarElement(car);
+          carsList.appendChild(carElement);
+        });
+
+        // Update filter to show all results
+        currentFilter = 'all';
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.dataset.filter === 'all') {
+            btn.classList.add('active');
+          }
+        });
+      }
+    }
+
+    // Enter key search
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -9,7 +9,7 @@ body {
 /* Hero Section */
 .header {
     text-align: center;
-    background: url('../images/Home.png') no-repeat center center/cover;
+    background: url('WebApp/Car_Rental/assets/images/Home.png') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
-    background: url('../images/Home.png') no-repeat center center/cover;
+    background: url('WebApp/Car_Rental/assets/images/Home.png') no-repeat center center/cover;
     filter: brightness(50%); /* Adjust this value (0.1 - 1) */
 }
 
