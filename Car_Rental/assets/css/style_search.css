@@ -1,4 +1,4 @@
-/* Reset */
+/* ------------------- RESET ------------------- */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -6,12 +6,31 @@ body {
     background-color: #f8f9fa;
 }
 
-/* Navbar */
-.navbar .form-control {
-    width: 200px;
+html {
+    scroll-behavior: smooth;
 }
 
-/* Filter Section */
+/* ------------------- HEADER ------------------- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------- SEARCH INPUT ------------------- */
+input[type="text"] {
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* ------------------- FILTER BUTTONS ------------------- */
 .filter-btn {
     background-color: #e5e7eb;
     color: #6b7280;
@@ -38,7 +57,12 @@ body {
     background-color: #059669;
 }
 
-/* Car Items */
+/* ------------------- MAIN CONTENT ------------------- */
+main {
+    padding-top: 6rem;
+}
+
+/* ------------------- CAR ITEMS ------------------- */
 .car-item {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     border: 1px solid #e5e7eb;
@@ -49,25 +73,6 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Search Results */
-.search-result-title {
-    color: #10b981;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-}
-
-/* Loading Animation */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.animate-spin {
-    animation: spin 1s linear infinite;
-}
-
-/* Car Image */
 .car-item img {
     max-height: 200px;
     object-fit: contain;
@@ -78,7 +83,6 @@ body {
     transform: scale(1.05);
 }
 
-/* Buttons */
 .car-item button {
     transition: all 0.3s ease;
     font-weight: 500;
@@ -88,37 +92,25 @@ body {
     transform: translateY(-1px);
 }
 
-/* Search Input */
-input[type="text"] {
-    transition: all 0.3s ease;
+/* ------------------- SEARCH RESULT SECTION ------------------- */
+.search-result-title {
+    color: #10b981;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
 }
 
-input[type="text"]:focus {
-    border-color: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+/* ------------------- LOADING SPINNER ------------------- */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .car-item {
-        margin-bottom: 1rem;
-    }
-    
-    .car-item .flex {
-        flex-direction: column;
-    }
-    
-    .filter-btn {
-        margin-bottom: 0.5rem;
-    }
-    
-    .search-bar {
-        width: 100%;
-        margin-bottom: 1rem;
-    }
+.animate-spin {
+    animation: spin 1s linear infinite;
 }
 
-/* No Results */
+/* ------------------- NO RESULTS ------------------- */
 .no-results {
     text-align: center;
     padding: 4rem 0;
@@ -130,7 +122,7 @@ input[type="text"]:focus {
     margin-bottom: 1rem;
 }
 
-/* Footer */
+/* ------------------- FOOTER ------------------- */
 .global-footer {
     background-color: #ffffff;
     padding: 15px 0;
@@ -163,7 +155,7 @@ input[type="text"]:focus {
     color: #10b981;
 }
 
-/* Car Info Section */
+/* ------------------- CAR INFO SECTION ------------------- */
 .car-info {
     padding: 1.5rem;
 }
@@ -216,81 +208,30 @@ input[type="text"]:focus {
     background-color: #f0fdf4;
 }
 
-/* Header Fixed */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Main Content Padding */
-main {
-    padding-top: 6rem;
-}
-
-/* Filter Section Styling */
-.filter-section {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-}
-
-.filter-icon {
-    color: #10b981;
-    margin-right: 0.5rem;
-}
-
-/* Smooth Scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Loading Indicator */
-.loading-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 0;
-}
-
-.loading-spinner {
-    width: 2rem;
-    height: 2rem;
-    border: 2px solid #e5e7eb;
-    border-top: 2px solid #10b981;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-/* Car Layout */
-.car-layout {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.car-content {
-    flex: 1;
-}
-
-.car-image-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+/* ------------------- RESPONSIVE DESIGN ------------------- */
 @media (max-width: 768px) {
+    .car-item {
+        margin-bottom: 1rem;
+    }
+
+    .car-item .flex {
+        flex-direction: column;
+    }
+
+    .filter-btn {
+        margin-bottom: 0.5rem;
+    }
+
+    .search-bar {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
     .car-layout {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .car-image-container {
         order: -1;
     }

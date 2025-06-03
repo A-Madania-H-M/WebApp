@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../assets/css/style_payment.css">
+    <link rel="stylesheet" href="../assets/css/style_header.css">
+    <title>Porsche Cayenne</title>
+
+    <!-- Midtrans Snap.js -->
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="YOUR_CLIENT_KEY_HERE"></script>
+</head>
+<body>
+    <main>
+
+        <!-- Car Information Section -->
+        <section class="car-info">
+            <img src="../assets/images/Cayenne_Header.png" alt="Porsche Cayenne">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                <h1>Porsche Cayenne</h1>
+                <div class="price">Rp. 1.350.000,00 / hari</div>
+            </div>
+        </section>
+
+        <!-- Payment Form Container -->
+        <section class="payment-container">
+            <h2 class="payment-title">PAYMENT</h2>
+            
+            <form id="payment-form" method="POST" action="midtrans_payment.php">
+                <input type="text" name="name" placeholder="Nama" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="phone" placeholder="Handphone" required>
+                
+                <div class="payment-methods-title">Pilih Metode Pembayaran</div>
+                
+                <div class="payment-logos">
+                    <img src="../assets/images/bni-img.png" alt="BNI" onclick="selectPayment('bni', this)">
+                    <img src="../assets/images/bca-img.png" alt="BCA" onclick="selectPayment('bca', this)">
+                    <img src="../assets/images/briva-img.png" alt="BRIVA" onclick="selectPayment('briva', this)">
+                    <img src="../assets/images/ovo-img.png" alt="OVO" onclick="selectPayment('ovo', this)">
+                    <img src="../assets/images/alfamart-img.png" alt="Alfamart" onclick="selectPayment('alfamart', this)">
+                    <img src="../assets/images/indomaret-img.png" alt="Indomaret" onclick="selectPayment('indomaret', this)">
+                    <img src="../assets/images/paypal-img.png" alt="PayPal" onclick="selectPayment('paypal', this)">
+                    <img src="../assets/images/dana-img.png" alt="DANA" onclick="selectPayment('dana', this)">
+                </div>
+                
+                <input type="hidden" name="payment_method" id="payment_method" value="">
+                <button id="pay-button" type="submit">
+                    <span class="button-text">Bayar Sekarang</span>
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                    </div>
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Success Popup -->
+    <div class="popup-overlay" id="successPopup">
+        <div class="success-popup">
+            <div class="success-icon">✓</div>
+            <h2>Pembayaran Berhasil!</h2>
+            <p>Terima kasih! Pesanan Anda telah berhasil diproses.</p>
+            
+            <div class="order-details">
+                <h3>Detail Pesanan</h3>
+                <div class="detail-row">
+                    <span>Mobil:</span>
+                    <span>Porsche Cayenne</span>
+                </div>
+                <div class="detail-row">
+                    <span>Harga per hari:</span>
+                    <span>Rp. 1.360.000,00</span>
+                </div>
+                <div class="detail-row">
+                    <span>Order ID:</span>
+                    <span id="orderId">#ORDER-001</span>
+                </div>
+                <div class="detail-row">
+                    <span>Status:</span>
+                    <span style="color: #4CAF50;">✓ Confirmed</span>
+                </div>
+            </div>
+            
+            <div class="popup-buttons">
+                <button class="btn-secondary" onclick="closePopup()">Tutup</button>
+                <button class="btn-primary" onclick="downloadReceipt()">Download Receipt</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/payment.js"></script>
+</body>
+</html>
