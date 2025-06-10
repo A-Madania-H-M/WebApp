@@ -236,3 +236,26 @@ main {
         order: -1;
     }
 }
+
+.login-btn {
+    display: inline-block;
+    background-color: #4CB963; /* lime-500 */
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .login-btn i {
+    margin-left: 8px;
+  }
+  
+  .login-btn:hover {
+    background-color: #4CB963; /* darker lime */
+    transform: translateX(2px);
+    text-decoration: none;
+    color: #fff;
+  }
+  
